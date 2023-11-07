@@ -35,7 +35,7 @@ public class ClientService implements Serializable {
 	@Transactional(readOnly = true)
 	public ClientDTO findById(Long id) {
 		Optional<Client> obj = repository.findById(id);
-		Client entity = obj.orElseThrow(() -> new NoSuchElementException("Client not found with ID: " + id));
+		Client entity = obj.orElseThrow(() -> new ResourceNotFoundException("Client not found with ID: " + id));
 
 		return new ClientDTO(entity);
 	}
